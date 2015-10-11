@@ -11,21 +11,21 @@ CREATE TABLE Actor (
 	id int,
 	last varchar(20),
 	sex varchar(6),
-	dob date NOT NULL -- Every actor must have a dob
+	dob date NOT NULL, -- Every actor must have a dob
 	dod date,
 	PRIMARY KEY(id), -- Actor id must be unique
 	CHECK(sex='male' OR sex='female'),
-	CHECK (dod IS NULL OR (dod > dob))
+	CHECK (dod > dob)
 	) ENGINE = INNODB;
 
 CREATE TABLE Director (
 	id int,
 	last varchar(20),
 	first varchar(20),
-	dob date NOT NULL -- Every director must have a dob
+	dob date NOT NULL, -- Every director must have a dob
 	dod date,
-	PRIMARY KEY(id), --director id must be unique
-	CHECK(dod IS NULL OR (dod > dob))
+	PRIMARY KEY(id), -- director id must be unique
+	CHECK (dod > dob)
 	) ENGINE = INNODB;
 
 CREATE TABLE MovieGenre (
