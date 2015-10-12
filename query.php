@@ -12,6 +12,7 @@
 <p>
 <form action="query.php" method="GET">
 	<textarea name="query" cols="60" rows="8"></textarea>
+	<br>
 	<input type="submit" value="Submit">
 </form> 
 </p>
@@ -32,10 +33,13 @@ if (!empty($query))
 	echo "<h3> Results from MySQL:</h3>";
 	$result = mysql_query($query, $db_connection);
 	$numField = mysql_num_fields($result);
-	
-	echo "<table border='1'>";	
-	echo "<tr>";
-	for($i = 0; $i < $nfield; $i++)
+	$errmsg = mysql_error($db_connection);
+	if (!$result) 
+		echo $errmsg;
+	else {
+	echo "<table border=1 cellspacing=1 cellpadding=2>";	
+	echo "<tr align=\"center\">";
+	for($i = 0; $i < $numField; $i++)
 		{
 			echo "<th>";
 			echo mysql_field_name($result, $i);
@@ -45,16 +49,17 @@ if (!empty($query))
 
 	while ($row = mysql_fetch_row($result))
 	{
-		echo "<tr>";
+		echo "<tr align=\"center\">";
 		for($i = 0; $i < $numField; $i++)
 		{
-		  	echo "<td>" . $row[$i] . "</td>";
+			if ($row[$i] == "") echo "<td>N/A</td";
+			else echo "<td>" . $row[$i] . "</td>";
 		}
 		echo "</tr>";
 
 	}
 	echo"</table>";
-
+	}
 }
 
 mysql_close($db_connection);
