@@ -47,7 +47,7 @@ CREATE TABLE MovieActor (
 	aid int,
 	role varchar(50),
 	FOREIGN KEY (mid) references Movie(id),
-	FOREIGN KEY(aid) references Actor(id)
+	FOREIGN KEY (aid) references Actor(id)
 	) ENGINE = INNODB;
 
 CREATE TABLE Review (
