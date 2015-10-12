@@ -1,5 +1,5 @@
 -- Give me the names of all the actors in the movie 'Die Another Day'
-SELECT CONCAT(first, SPACE(1), last)
+SELECT NAME(first, SPACE(1), last)
 FROM Actor A, MovieActor MA, Movie M 
 WHERE (M.title = 'Die Another Day') AND 
       (MA.mid = M.id) AND 
