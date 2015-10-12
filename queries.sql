@@ -19,3 +19,8 @@ FROM (SELECT COUNT(*) num
 WHERE num > 1; 
 
 -- another query that you came up with
+-- Show all the movies that the director is also actor
+SELECT M.* FROM Movie M, 
+                ((SELECT DISTINCT D.mid id FROM MovieDirector D, MovieActor A
+                                          WHERE A.aid = D.did AND A.mid = D.mid) N )
+           WHERE M.id = N.id;
