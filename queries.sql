@@ -3,7 +3,7 @@ SELECT CONCAT(first, SPACE(1), last)
 FROM Actor A, MovieActor MA, Movie M 
 WHERE M.title = 'Die Another Day' AND 
 	MA.mid = M.id AND 
-	MA.id = A.aid;  
+	MA.aid = A.id;  
 
 -- Give me the count of all the actors who acted in multiple movies
  
