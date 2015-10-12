@@ -10,6 +10,7 @@ CREATE TABLE Movie (
 CREATE TABLE Actor (
 	id int,
 	last varchar(20),
+	first varchar(20),
 	sex varchar(6),
 	dob date NOT NULL, -- Every actor must have a dob
 	dod date,
